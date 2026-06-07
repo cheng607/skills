@@ -20,6 +20,33 @@ description: >-
 
 Align with the project's design system or Tailwind config when present.
 
+## Directory Layout
+
+```
+responsive-ui-design/
+├── SKILL.md
+├── scripts/
+│   ├── validate.py              # Scan for responsive/a11y issues
+│   └── scaffold.sh              # Copy token/theme templates into project
+├── references/
+│   ├── design-tokens-guide.md
+│   ├── layout-patterns.md
+│   └── breakpoints-guide.md
+└── assets/
+    ├── design-tokens-template.json
+    └── tailwind-theme-template.js
+```
+
+Workflow:
+
+```bash
+# 1. Scaffold design tokens into project
+bash scripts/scaffold.sh ./my-app
+
+# 2. Implement layouts and validate
+python scripts/validate.py src/
+```
+
 ## Breakpoints
 
 Default reference (adjust to project tokens):
@@ -201,6 +228,8 @@ When component width matters more than viewport:
 
 ## Pre-Delivery Checklist
 
+See [references/breakpoints-guide.md](references/breakpoints-guide.md) for the full testing matrix. Minimum checks:
+
 - [ ] No horizontal scroll at 320px width
 - [ ] Text readable without zoom (≥ 16px base on mobile)
 - [ ] Focus states visible on all interactive elements
@@ -210,4 +239,12 @@ When component width matters more than viewport:
 
 ## Additional Resources
 
-- Token reference and breakpoint snippets: [reference.md](reference.md)
+| Resource | Purpose |
+|----------|---------|
+| [references/design-tokens-guide.md](references/design-tokens-guide.md) | CSS variables and semantic naming |
+| [references/layout-patterns.md](references/layout-patterns.md) | Page shell, grid, stack→row patterns |
+| [references/breakpoints-guide.md](references/breakpoints-guide.md) | Breakpoint scale and viewport testing |
+| [assets/design-tokens-template.json](assets/design-tokens-template.json) | Machine-readable token starter |
+| [assets/tailwind-theme-template.js](assets/tailwind-theme-template.js) | Tailwind theme extension starter |
+| [scripts/validate.py](scripts/validate.py) | Automated responsive UI checks |
+| [scripts/scaffold.sh](scripts/scaffold.sh) | Copy token/theme templates into project |

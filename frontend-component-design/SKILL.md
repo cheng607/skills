@@ -22,6 +22,32 @@ Before writing code:
 
 Match the project's existing stack (React/Vue/Svelte), styling approach, and file conventions.
 
+## Directory Layout
+
+```
+frontend-component-design/
+├── SKILL.md
+├── scripts/
+│   ├── validate.py          # Scan components for a11y/API issues
+│   └── scaffold.sh          # Generate component from template
+├── references/
+│   ├── examples.md
+│   ├── patterns-guide.md
+│   └── accessibility-guide.md
+└── assets/
+    └── component-props-template.ts
+```
+
+Workflow:
+
+```bash
+# 1. Scaffold a new component
+bash scripts/scaffold.sh Button src/components/Button.tsx
+
+# 2. Implement and validate
+python scripts/validate.py src/components/
+```
+
 ## Component API Design
 
 ### Props checklist
@@ -164,4 +190,11 @@ Before marking done:
 
 ## Additional Resources
 
-- Component API examples: [examples.md](examples.md)
+| Resource | Purpose |
+|----------|---------|
+| [references/examples.md](references/examples.md) | Real-world component API examples |
+| [references/patterns-guide.md](references/patterns-guide.md) | Compound, headless, and state patterns |
+| [references/accessibility-guide.md](references/accessibility-guide.md) | ARIA, keyboard, focus management |
+| [assets/component-props-template.ts](assets/component-props-template.ts) | Typed component starter template |
+| [scripts/validate.py](scripts/validate.py) | Automated component lint checks |
+| [scripts/scaffold.sh](scripts/scaffold.sh) | Generate typed component from template |

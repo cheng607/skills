@@ -2,20 +2,56 @@
 
 个人 Cursor Agent Skills 集合，用于在不同项目中复用前端开发与设计相关的工作流。
 
-## 目录结构
+## 标准 Skill 目录结构
+
+每个 skill 遵循统一布局：
+
+```
+my-skill/
+├── SKILL.md              # 核心操作手册（必须）
+├── scripts/              # 可选：自动化脚本
+│   ├── validate.py       # 校验脚本
+│   └── scaffold.sh       # 脚手架/部署脚本
+├── references/           # 可选：参考文档（按需阅读）
+│   ├── examples.md
+│   └── guide.md
+└── assets/               # 可选：模板与资源（复制到项目中使用）
+    └── config-template.json
+```
+
+- `SKILL.md`：精简的操作指南，控制在 500 行以内
+- `references/`：详细文档，按需阅读（渐进式披露）
+- `scripts/`：可执行的校验/自动化脚本
+- `assets/`：复制到项目中使用的模板文件
+
+## 本仓库结构
 
 ```
 skills/
 ├── README.md
-├── frontend-component-design/   # 组件设计与实现
+├── frontend-component-design/
 │   ├── SKILL.md
-│   └── examples.md
-└── responsive-ui-design/        # 响应式 UI 与布局
+│   ├── scripts/
+│   │   ├── validate.py
+│   │   └── scaffold.sh
+│   ├── references/
+│   │   ├── examples.md
+│   │   ├── patterns-guide.md
+│   │   └── accessibility-guide.md
+│   └── assets/component-props-template.ts
+└── responsive-ui-design/
     ├── SKILL.md
-    └── reference.md
+    ├── scripts/
+    │   ├── validate.py
+    │   └── scaffold.sh
+    ├── references/
+    │   ├── design-tokens-guide.md
+    │   ├── layout-patterns.md
+    │   └── breakpoints-guide.md
+    └── assets/
+        ├── design-tokens-template.json
+        └── tailwind-theme-template.js
 ```
-
-每个 skill 是一个独立目录，核心文件为 `SKILL.md`（含 YAML frontmatter）。
 
 ## 安装到 Cursor
 
@@ -43,9 +79,9 @@ Copy-Item -Recurse responsive-ui-design $env:USERPROFILE\.cursor\skills\
 ## 新增 Skill 规范
 
 1. 目录名：小写 + 连字符，如 `my-new-skill`
-2. `SKILL.md` 必须包含 `name` 与 `description` frontmatter
-3. `description` 用第三人称，写明 **做什么** 和 **何时触发**
-4. 主文件控制在 500 行以内；详细内容放到 `reference.md` / `examples.md`
+2. 必须包含 `SKILL.md`（含 `name` 与 `description` frontmatter）
+3. 详细内容放入 `references/`，模板放入 `assets/`，校验脚本放入 `scripts/`
+4. `description` 用第三人称，写明 **做什么** 和 **何时触发**
 5. 不要写入 `~/.cursor/skills-cursor/`（Cursor 内置 skills 目录）
 
 ## Commit 规范
